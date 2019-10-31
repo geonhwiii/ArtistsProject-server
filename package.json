@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app",
-    "start": "NODE_ENV=production PORT=80 pm2 start app.js"
+    "start": "NODE_ENV=production pm2 start app.js"
   },
   "repository": "https://github.com/geonhwiii/ArtistsProject-server",
   "author": "geonhwiii <g01063962671@gmail.com>",
