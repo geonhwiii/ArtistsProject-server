@@ -6,8 +6,11 @@ const morgan = require('morgan');
 const session = require('express-session');
 
 const rootRouter = require('./routes');
+const { sequelize } = require('./models');
 
 const app = express();
+sequelize.sync();
+
 app.set('port', process.env.PORT || 8001);
 
 // TODO: Apply Middleware
@@ -28,8 +31,24 @@ app.use(
   })
 );
 
-// TODO: Route '/'
-app.use('/', rootRouter);
+// TODO: Route '/api'
+app.use('/api', rootRouter);
+
+// TODO: Catch 404 handler
+app.use((req, res, next) => {
+  const err = new Error('Not Found...');
+  err.status = 403;
+  next(err);
+});
+
+// TODO: Handle Error
+app.use((err, req, res) => {
+  res.status(err.status || 500);
+  res.json({
+    message: err.message,
+    data: err.data
+  });
+});
 
 // TODO: Running Server
 app.listen(app.get('port'), () => {
