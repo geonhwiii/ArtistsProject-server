@@ -27,7 +27,7 @@ tracksRouter.get('/:id', async (req, res, next) => {
   }
 });
 
-// TODO: POST '/api/track/:id'
+// TODO: POST '/api/track/'
 tracksRouter.post('/', async (req, res, next) => {
   const { track_title, track_artist, track_url, playtime, album_id } = req.body;
   try {
@@ -45,7 +45,7 @@ tracksRouter.post('/', async (req, res, next) => {
   }
 });
 
-// TODO: POST '/api/track/:id'
+// TODO: DELETE '/api/track/:id'
 tracksRouter.delete('/:id', async (req, res, next) => {
   const id = +req.params.id;
   try {
