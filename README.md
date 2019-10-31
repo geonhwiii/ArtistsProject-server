@@ -15,3 +15,5 @@
 > 3. Set MySQL setting by '`sequelize init`'
 
 ### 2. Make Schema
+
+<img src="https://github.com/geonhwiii/ArtistsProject-server/blob/master/img/schema.png?raw=true" width="500" height="300">
