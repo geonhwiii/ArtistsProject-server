@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const session = require('express-session');
-
+const cors = require('cors');
 const rootRouter = require('./routes');
 const { sequelize } = require('./models');
 
@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(cors());
 app.use(
   session({
     resave: false,
@@ -34,15 +35,6 @@ app.use(
     }
   })
 );
-
-// TODO: Prevent CORS Error
-app.use((req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Expose-Headers', 'x-total-count');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,authorization');
-  next();
-});
 
 // TODO: Route '/api'
 app.use('/api', rootRouter);
