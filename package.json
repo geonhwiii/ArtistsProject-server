@@ -4,7 +4,8 @@
   "description": "아티스츠카드 과제 제출 [서버]",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "dev": "nodemon app",
+    "start": "NODE_ENV=production PORT=80 pm2 start app"
   },
   "repository": "https://github.com/geonhwiii/ArtistsProject-server",
   "author": "geonhwiii <g01063962671@gmail.com>",
